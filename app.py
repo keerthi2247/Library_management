@@ -106,7 +106,7 @@ def student_dashboard():
 
     conn.close()
     return render_template('student_dashboard.html', student=student, transactions=transactions)
-
+#admin login
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
@@ -169,7 +169,7 @@ def admin_dashboard():
 
     conn.close()
     return render_template('admin_dashboard.html', books=books, transactions=transactions)
-
+#book issure and return
 @app.route('/admin/issue', methods=['POST'])
 def admin_issue_book():
     student_name = request.form['student_name']
@@ -237,6 +237,7 @@ def admin_return_book():
     else:
         conn.close()
         return "Student not found", 404
+#transaction history
 @app.route('/admin/transactions', methods=['POST'])
 def admin_transactions():
     enrollment_number = request.form.get('enrollment_number')
